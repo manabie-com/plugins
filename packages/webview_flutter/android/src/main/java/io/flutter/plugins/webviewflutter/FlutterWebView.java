@@ -74,18 +74,18 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
 
       return true;
     }
-  }
 
-  @Override
-  public boolean onShowFileChooser(
-      WebView webView,
-      ValueCallback<Uri[]> filePathCallback,
-      FileChooserParams fileChooserParams) {
-    final Context context = webView.getContext();
-    final String title = context.getResources().getString(R.string.webview_file_chooser_title);
-    final String type = context.getResources().getString(R.string.webview_file_chooser_type);
-    new FileChooserLauncher(context, title, type, true, filePathCallback).start();
-    return true;
+    @Override
+    public boolean onShowFileChooser(
+        WebView webView,
+        ValueCallback<Uri[]> filePathCallback,
+        FileChooserParams fileChooserParams) {
+      final Context context = webView.getContext();
+      final String title = context.getResources().getString(R.string.webview_file_chooser_title);
+      final String type = context.getResources().getString(R.string.webview_file_chooser_type);
+      new FileChooserLauncher(context, title, type, true, filePathCallback).start();
+      return true;
+    }
   }
 
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
