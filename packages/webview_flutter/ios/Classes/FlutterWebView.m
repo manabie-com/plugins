@@ -128,16 +128,20 @@
 
     __typeof__(self) __strong wSelf = self;
     _navigationDelegate.didFinishLoad = ^(WKNavigation* view) {
-      NSString* source = @"var meta = document.createElement('meta'); \
-              meta.name = "
-                         @"'viewport'; \
-              meta.content = 'width=device-width, "
-                         @"initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; \
-             "
-                         @" var head = document.getElementsByTagName('head')[0];\
-              "
-                         @"head.appendChild(meta);";
-      [wSelf->_webView evaluateJavaScript:source completionHandler:nil];
+      /// https://manabie.atlassian.net/jira/software/projects/JPREP/boards/24?selectedIssue=JPREP-28
+      /// We comment this because of this issue,
+      /// The website will set viewport
+      /// Todo: create an variable to enable/disable this viewport setting
+      // NSString* source = @"var meta = document.createElement('meta'); \
+      //        meta.name = "
+      //                   @"'viewport'; \
+      //        meta.content = 'width=device-width, "
+      //                   @"initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; \
+      //       "
+      //                   @" var head = document.getElementsByTagName('head')[0];\
+      //        "
+      //                   @"head.appendChild(meta);";
+      // [wSelf->_webView evaluateJavaScript:source completionHandler:nil];
     };
   }
   return self;
